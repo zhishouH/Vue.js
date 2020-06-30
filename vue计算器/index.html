@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A vue.js Calculator</title>
+    <style>
+        p , input {
+            font-family: monospace;
+        }
+        p {
+            white-space: pre;
+        }
+    </style>
+</head>
+<body> 
+    <!-- 应用程序的DOM锚 -->
+    <div id="app">
+        <!-- 应用程序的表单输入框 -->
+        <p>x <input v-model="x"></p>
+        <p>y <input v-model="y"></p>
+        <p>--------------------------</p>
+        <!-- 结果将会显示在这span标签内 -->
+        <p>= <span v-text="result"></span></p>
+    </div>
+    <!-- 添加vue.js库的script标签 -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        function isNotNumbericValue(value) {
+            return isNaN(value) ||  !isFinite(value) ;  
+        }
+        var calc = new Vue ({
+            el:'#app' ,
+            data: {x: 0 , y: 0 , lastResult: 0} ,
+            computed: {
+                result: function() {
+                    let x = parseFloat(this.x) 
+                    if (isNotNumbericValue(x)) {
+                        return this.lastResult
+                    } 
+                    let y = parseFloat(this.y) 
+                    if (isNotNumbericValue(y)) {
+                         return this.lastResult 
+                    }
+                    this.lastResult = x + y
+                    return this.lastResult
+                }
+            }
+        })
+    </script>
+</body>
+</html>
