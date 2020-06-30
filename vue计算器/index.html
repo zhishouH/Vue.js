@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>A vue.js Calculator</title>
     <style>
-        p , input {
+        p, input {
             font-family: monospace;
         }
         p {
@@ -26,11 +26,15 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script type="text/javascript">
         function isNotNumbericValue(value) {
-            return isNaN(value) ||  !isFinite(value) ;  
+            return isNaN(value) || !isFinite(value)  
         }
-        var calc = new Vue ({
-            el:'#app' ,
-            data: {x: 0 , y: 0 , lastResult: 0} ,
+        var calc = new Vue({
+            el:'#app',
+            data: {
+                x: 0, 
+                y: 0, 
+                lastResult: 0
+            },
             computed: {
                 result: function() {
                     let x = parseFloat(this.x) 
