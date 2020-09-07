@@ -8,7 +8,29 @@
 </head>
 
 <body>
+  <div id="myApp">
+    <h3>游戏列表</h3>
+    <div v-if="seen">2020最新：</div>
+    <ol>
+      <li v-for="game in games">
+        {{game.title}} / {{game.price}}元
+      </li>
+    </ol>
+  </div>
 
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        seen: true,
+        games: [
+          { title: "勇者斗恶龙", price: 400 },
+          { title: "超级马里奥", price: 300 },
+          { title: "我的世界", price: 99 }
+        ]
+      }
+    })
+  </script>
 </body>
 
 </html>
