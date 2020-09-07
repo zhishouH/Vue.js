@@ -33,3 +33,19 @@
   </ol>
 </div>
 ```
+- script
+```
+<script>
+  var myApp = new Vue({
+    el: '#myApp',
+    data: {
+      seen:true,
+      games: [
+        {title:"勇者斗恶龙",price:400},
+        {title:"超级马里奥",price:300},
+        {title:"我的世界",price:99}
+      ]
+    }
+  })
+</script>
+```
