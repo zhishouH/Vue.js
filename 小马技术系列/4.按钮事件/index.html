@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>按钮事件</title>
+</head>
+
+<body>
+  <div id="myApp">
+    <p>您最喜欢的球员是：{{mygame}}</p>
+    <button v-on:click=btnclick('C罗纳尔多')>C罗纳尔多</button>
+    <button v-on:click=btnclick('梅西')>梅西</button>
+    <button @click=btnclick('内马尔')>内马尔</button>
+    <button @click=btnclick('姆巴佩')>姆巴佩</button>
+
+  </div>
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        mygame: '超级马里奥'
+      },
+      methods: {
+        btnclick: function (pname) {
+          this.mygame = pname
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>
