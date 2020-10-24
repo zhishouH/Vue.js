@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+
+  <title>first-vue-html</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <header>
+      <div class="header-left">
+        {{sitename}}
+      </div>
+      <div class="header-right">
+        <span class="num" :class="{'num-active': cartItemCount > 0}">{{cartItemCount}}</span>
+        <span>
+          <svg class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z" />
+          </svg>
+        </span>
+        <span>Checkout</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="main-left">
+        <figure>
+          <img v-bind:src="product.image">
+        </figure>
+      </div>
+      <div class="main-right">
+        <h1>{{product.title}}</h1>
+        <p v-html="product.description"></p>
+        <p class="price">
+          {{product.price | formatPrice}}
+        </p>
+        <button class="btn" @click="addToCart" v-show="canAddToCart">Add to cart</button>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    var APP_LOG_LIFECYCLE_EVENTS = true
+    var webstore = new Vue({
+      el: "#app",
+      data: {
+        sitename: "Vue.js Pet Depot",
+        product: {
+          id: 1001,
+          title: "Cat Food,25lb bag",
+          description: "A 25 pound bag of <em>irresistible</em>," + "organic goodness for your cat.",
+          price: 2000,
+          image: "images/product-fullsize.png",
+          count: 5
+        },
+        test: true,
+        cart: []
+      },
+
+      computed: {
+        cartItemCount: function () {
+          return this.cart.length || 0
+        },
+        canAddToCart: function () {
+          return this.product.count > this.cartItemCount
+        }
+      },
+
+      filters: {
+        formatPrice: function (price) {
+          if (!parseInt(price)) {
+            return ""
+          }
+          if (price > 99999) {
+            var priceString = (price / 100).toFixed(2)
+            var priceArray = priceString.split("").reverse()
+            var index = 3
+            while (priceArray.length > length + 3) {
+              priceArray.splice(index + 3, 0, ",")
+              index += 4
+            }
+            return "$" + priceArray.reverse().join()
+          } else {
+            return "$" + (price / 100).toFixed(2)
+          }
+        }
+      },
+
+      beforeCreate: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("beforeCreate")
+        }
+      },
+      created: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("created")
+        }
+      },
+      beforeMount: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("beforeMount")
+        }
+      },
+      mounted: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("mounted")
+        }
+      },
+      beforeUpdate: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("beforeUpdate")
+        }
+      },
+      updated: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("updated")
+        }
+      },
+      beforeDestroy: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("beforeDestory")
+        }
+      },
+      destroyed: function () {
+        if (APP_LOG_LIFECYCLE_EVENTS) {
+          console.log("destroyed")
+        }
+      },
+
+      methods: {
+        addToCart: function () {
+          this.cart.push(this.product.id)
+        }
+
+      },
+
+    })
+  </script>
+</body>
+
+</html>

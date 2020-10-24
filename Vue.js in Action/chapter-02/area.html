@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://unpkg.com/vue"></script>
+  <title>Calculating Area - Vue.js in Action</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>
+      Area is equal to: {{area}}
+    </p>
+    <p>
+      <button @click="length += 1">Add length</button>
+      <button @click="width += 1">Add width</button>
+    </p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        length: 5,
+        width: 3
+      },
+      computed: {
+        area: function () {
+          return this.width * this.length
+        }
+      },
+      watch: {
+        length: function (newVal, oldVal) {
+          console.log(`The old value of length was:${oldVal}  The new value of length is:${newVal}`)
+        },
+        width: function (newVal, oldVal) {
+          console.log(`The old value of width was:${oldVal}  The new value of width is:${newVal}`)
+        },
+        area: function (newVal, oldVal) {
+          console.log(`The old value of area was:${oldVal}  The new value of area is:${newVal}`)
+        },
+        beforeUpdate: function () {
+          console.log(`All those data change happened before the output gets updated.`)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
