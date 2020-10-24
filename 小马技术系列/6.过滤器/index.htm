@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>过滤器</title>
+</head>
+
+<body>
+  <div id="myApp">
+    <p>{{message}}</p>
+    <p>{{message | toUpper}}</p>
+    <hr>
+    <p>目前学习vue.js的进度：{{num}} ({{num | topercentage}})</p>
+  </div>
+
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        message: 'hello vue,js world',
+        num: 0.3
+      },
+      filters: {
+        toUpper: function (value) {
+          return value.toUpperCase()
+        },
+        topercentage: function (value) {
+          return value * 100 + '%'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
