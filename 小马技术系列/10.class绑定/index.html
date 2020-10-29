@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>class绑定</title>
+  <!-- v-bind  -->
+  <style>
+    body {
+      font-size: 24px;
+    }
+
+    .active {
+      color: red
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myApp">
+    <div v-bind:class="{active:isActive}">红色文本1</div>
+    <div :class="{active:isActive}">红色文本2</div>
+    <button @click="btnclick">改变class吧</button>
+  </div>
+
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        isActive: true
+      },
+      methods: {
+        btnclick: function () {
+          this.isActive = false
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
