@@ -10,15 +10,35 @@
 
 <body>
   <div id="myApp">
-
+    <p>今年3月3日发卖的任天堂新一代主机Switch的价格是：{{price}}日元，含税价格为：{{priceInTax}}日元，折合人民币为：{{priceChinaRMB}}元</p>
+    <button @click="btnclick(10800)">把含税价格改为10800日元</button>
   </div>
 
   <script>
     var myApp = new Vue({
       el: '#myApp',
       data: {
-
+        price: 29980
+      },
+      computed: {
+        priceInTax: {
+          get: function () {
+            return this.price * 1.08
+          },
+          set: function (value) {
+            this.price = value
+          }
+        },
+        priceChinaRMB: function () {
+          return Math.round(this.priceInTax / 16.75)
+        }
+      },
+      methods: {
+        btnclick: function (newPrice) {
+          this.price = newPrice
+        }
       }
+
     })
   </script>
 </body>
