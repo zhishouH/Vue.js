@@ -26,7 +26,7 @@
             return this.price * 1.08
           },
           set: function (value) {
-            this.price = value
+            this.price = value / 1.08
           }
         },
         priceChinaRMB: function () {
@@ -35,7 +35,7 @@
       },
       methods: {
         btnclick: function (newPrice) {
-          this.price = newPrice
+          this.priceInTax = newPrice
         }
       }
 
