@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>class对象绑定</title>
+  <style>
+    body {
+      font-size: 16px;
+    }
+
+    .active {
+      color: red;
+    }
+
+    .big {
+      font-size: 32px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myApp">
+    <div :class="myClass">红色文本1</div>
+    <button @click="btnclick">改变class吧</button>
+  </div>
+
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        myClass: {
+          active: true,
+          big: true
+        }
+      },
+      methods: {
+        btnclick: function () {
+          this.myClass.active = !this.myClass.active,
+            this.myClass.big = !this.myClass.big
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
