@@ -21,17 +21,29 @@ header .header-left {
   font-size: 24px;
 }
 header .header-right {
-  border: 1px solid #dddddd;
+  /* border: 1px solid #dddddd;
   height: 24px;
   line-height: 24px;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 4px; */
+}
+header .header-right button {
+  padding: 8px 16px;
+  outline: none;
+  background-color: #42A5F5;
+  border: 1px solid #42A5F5;
+  border-radius:4px;
+}
+header .header-right button:active {
+  background-color: #64B5F6;
+  border: 1px solid #64B5F6;
 }
 .num {
   color: #333333;
+  font-size: 16px;
 }
 .num-active {
-  color: #42A5F5;
+  color: #333333;
 }
 .icon {
   width: 16px;
@@ -49,7 +61,7 @@ main .main-right {
   margin-right: 150px;
   height: 150px;
 }
-.btn {
+.btn-1 {
   width: 100px;
   background-color: #42A5F5;
   border: 1px solid #42A5F5;
@@ -59,7 +71,21 @@ main .main-right {
   border-radius: 4px;
 }
 
-.btn:active {
+.btn-1:active {
+  background-color: #64B5F6;
+  border: 1px solid #64B5F6;
+}
+.btn-2 {
+  width: 100px;
+  background-color: #42A5F5;
+  border: 1px solid #42A5F5;
+  outline: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: no-drop;
+}
+.btn-2:active {
   background-color: #64B5F6;
   border: 1px solid #64B5F6;
 }

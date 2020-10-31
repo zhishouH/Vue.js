@@ -18,31 +18,38 @@
         {{sitename}}
       </div>
       <div class="header-right">
-        <span class="num" :class="{'num-active': cartItemCount > 0}">{{cartItemCount}}</span>
-        <span>
-          <svg class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z" />
-          </svg>
-        </span>
-        <span>Checkout</span>
+        <button @click="showProduct">
+          <span class="num" :class="{'num-active': cartItemCount > 0}">{{cartItemCount}}</span>
+          <span>
+            <svg class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z" />
+            </svg>
+          </span>
+          <span>Checkout</span>
+        </button>
+
       </div>
     </header>
 
     <main>
-      <div class="main-left">
-        <figure>
-          <img v-bind:src="product.image">
-        </figure>
+      <div v-if="showProduct">
+        <div class="main-left">
+          <figure>
+            <img v-bind:src="product.image">
+          </figure>
+        </div>
+        <div class="main-right">
+          <h1>{{product.title}}</h1>
+          <p v-html="product.description"></p>
+          <p class="price">
+            {{product.price | formatPrice}}
+          </p>
+          <button class="btn-1" @click="addToCart" v-if="canAddToCart">Add to cart</button>
+          <button class="btn-2" @click="addToCart" v-else>Add to cart</button>
+        </div>
       </div>
-      <div class="main-right">
-        <h1>{{product.title}}</h1>
-        <p v-html="product.description"></p>
-        <p class="price">
-          {{product.price | formatPrice}}
-        </p>
-        <button class="btn" @click="addToCart" v-show="canAddToCart">Add to cart</button>
-      </div>
+      <div v-else></div>
     </main>
 
   </div>
@@ -62,7 +69,8 @@
           count: 5
         },
         test: true,
-        cart: []
+        cart: [],
+        showProduct: true,
       },
 
       computed: {
@@ -138,10 +146,11 @@
       methods: {
         addToCart: function () {
           this.cart.push(this.product.id)
+        },
+        showProduct: function () {
+          this.showProduct = this.showProduct ? false : true
         }
-
-      },
-
+      }
     })
   </script>
 </body>
