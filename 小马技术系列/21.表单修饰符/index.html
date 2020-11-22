@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>表单修饰符</title>
+</head>
+
+<body>
+  <div id="myApp">
+    <h1>用户注册</h1>
+    <label for="userName">用户：</label>
+    <input type="text" id="userName" v-model.lazy="userName" @change="checkUserName">
+    <span v-if="checkUserNameOK">可注册</span>
+    <br>
+    <label for="age">年龄：</label>
+    <input type="number" id="age" v-model.number="age">
+    <br>
+    <label for="content">个人简介:</label>
+    <br>
+    <textarea id="content" cols="30" rows="10" v-model.trim="content"></textarea>
+
+    <p>信息区：</p>
+    <p>用户：{{userName}}</p>
+    <p>年龄：{{age}}</p>
+    <p>个人简介：{{content}}</p>
+  </div>
+
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        userName: '',
+        checkUserNameOK: false,
+        age: '',
+        content: ''
+      },
+      methods: {
+        checkUserName: function () {
+          if (this.userName.length > 0) {
+            this.checkUserNameOK = true
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
