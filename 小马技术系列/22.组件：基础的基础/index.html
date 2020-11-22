@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>组件：基础的基础</title>
+</head>
+
+<body>
+  <div id="myApp">
+    <today-weather></today-weather>
+  </div>
+
+  <script>
+    Vue.component('today-weather', {
+      template: '<div>今天下雨，出不去啦，干什么呢？看YouTube吧！</div>'
+    });
+    var myApp = new Vue({
+      el: '#myApp'
+    })
+  </script>
+</body>
+
+</html>
