@@ -2,7 +2,7 @@
 
 #### 介绍
 
-###### 起步
+##### 起步
 
 直接用`<script>`引入
 
@@ -18,7 +18,7 @@
 
 
 
-###### 声明式渲染
+##### 声明式渲染
 
 1.第一个`vue`应用
 
@@ -66,7 +66,7 @@ hello world!
 
 
 
-###### 条件与循环
+##### 条件与循环
 
 1.`v-if`指令，条件
 
@@ -122,7 +122,7 @@ hello world!
 
 
 
-###### 处理用户输入
+##### 处理用户输入
 
 1.`v-on` 指令，添加一个事件监听器
 
@@ -177,7 +177,7 @@ Hello World!
 
 
 
-###### 组件化应用构建
+##### 组件化应用构建
 
 1.注册组件
 
@@ -202,5 +202,38 @@ Hello World!
 ```
 1.Talk is cheap. Show me the code.
 2.Talk is cheap. Show me the code.
+```
+
+2.`prop`
+
+```
+<div id="app">
+  <ol>
+    <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+  </ol>
+</div>
+
+<script>
+  Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{todo.text}}</li>'
+  })
+  var app = new Vue({
+    el: '#app',
+    data: {
+      groceryList: [
+        { id: 0, text: '蔬菜' },
+        { id: 1, text: '奶酪' },
+		{ id: 2, text: '随便其它什么人吃的东西' }
+	  ]
+	}
+  })
+</script>
+```
+
+```
+1.蔬菜
+2.奶酪
+3.随便其它什么人吃的东西
 ```
 
