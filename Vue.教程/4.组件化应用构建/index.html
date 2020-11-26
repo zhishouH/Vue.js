@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=`, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>注册组件</title>
+</head>
+
+<body>
+  <div id="app">
+    <ol>
+      <todo-item></todo-item>
+      <todo-item></todo-item>
+    </ol>
+
+  </div>
+
+  <script>
+    Vue.component('todo-item', {
+      template: '<li>Talk is cheap. Show me the code.</li>'
+    })
+    var app = new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>
