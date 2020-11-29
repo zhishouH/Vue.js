@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../../vue.js"></script>
+  <title>指令</title>
+</head>
+
+<body>
+  <div id="app">
+    <p v-if="seen">你现在看到我了</p>
+    <a v-bind:href="url">我是一个链接</a>
+    <div @click="click1">
+      <div @click.stop="click2">
+        click me
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        seen: true,
+        url: 'http:www.baidu.com'
+      },
+      methods: {
+        click1: function () {
+          console.log('click1...')
+        },
+        click2: function () {
+          console.log('click2...')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
