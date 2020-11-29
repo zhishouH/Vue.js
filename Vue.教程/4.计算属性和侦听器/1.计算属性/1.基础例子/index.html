@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../../../vue.js"></script>
+  <title>基础例子</title>
+</head>
+
+<body>
+  <div id="app">
+    {{message}}
+    <br>
+    {{reversedMessage}}
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'HELLO'
+      },
+      computed: {
+        reversedMessage: function () {
+          return this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
