@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../../vue.js"></script>
+  <title>缩写</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-bind指令 -->
+    <a v-bind:href="url">这是一个链接</a>
+    <br>
+    <a :href="url">这是一个链接</a>
+
+    <!-- v-on指令 -->
+    <p v-on:click="click1">click me</p>
+    <p @click="click1">click me</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        url: 'http:www.baidu.com'
+      },
+      methods: {
+        click1: function () {
+          console.log('click1')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
