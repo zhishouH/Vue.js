@@ -92,10 +92,88 @@
 2.指令
 
 - 参数
+
 - 动态参数
+
 - 修饰符
+
+  
+
+  指令完整代码：
+
+  ```
+  <div id="app">
+    <p v-if="seen">你现在看到我了</p>
+    <a v-bind:href="url">我是一个链接</a>
+    <div @click="click1">
+      <div @click.stop="click2">
+        click me
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        seen: true,
+        url: 'http:www.baidu.com'
+      },
+      methods: {
+        click1: function () {
+          console.log('click1...')
+        },
+        click2: function () {
+          console.log('click2...')
+        }
+      }
+    })
+  </script>
+  ```
+
+  ```
+  你现在看到我了
+  我是一个链接
+  click me
+  ```
+
+  
 
 3.缩写
 
 - v-bind缩写
+
 - v-on缩写
+
+  
+
+  缩写完整代码：
+
+  ```
+  <div id="app">
+    <!-- v-bind指令 -->
+    <a v-bind:href="url">这是一个链接</a>
+    <br>
+    <a :href="url">这是一个链接</a>
+  
+    <!-- v-on指令 -->
+    <p v-on:click="click1">click me</p>
+    <p @click="click1">click me</p>
+  </div>
+  
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        url: 'http:www.baidu.com'
+      },
+      methods: {
+        click1: function () {
+          console.log('click1')
+        }
+      }
+    })
+  </script>
+  ```
+
+  
