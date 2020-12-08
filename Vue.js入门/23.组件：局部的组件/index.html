@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>组件：局部的组件</title>
+</head>
+
+<body>
+  <div id="myApp">
+    <my-weather></my-weather>
+  </div>
+
+  <script>
+    var WeatherComponent = {
+      template: '<div>今天下雨，随它去吧！</div>'
+    }
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {},
+      components: {
+        'my-weather': WeatherComponent
+      }
+    })
+  </script>
+</body>
+
+</html>
