@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vue.js"></script>
+  <title>组件：传递变量</title>
+</head>
+
+<body>
+  <div id="myApp">
+    <div>请输入您的姓名：<input v-model.lazy="myName"></div>
+    <hr>
+    <say-hello :pname="myName"></say-hello>
+  </div>
+
+  <script>
+    Vue.component('say-hello', {
+      props: ['pname'],
+      template: '<div>您好，<strong>{{pname}}<strong>!</div>'
+    })
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        myName: 'zhishouh'
+      }
+    })
+  </script>
+</body>
+
+</html>
