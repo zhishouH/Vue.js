@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-on</title>
+  <script src="./vue.js"></script>
+  <style>
+    .count {
+      width: 300px;
+      height: 50px;
+    }
+
+    button {
+      float: left;
+      width: 100px;
+      height: 50px;
+      color: #FF3D00;
+      border: 1px solid #29B6F6;
+      background-color: #29B6F6;
+      outline: none;
+    }
+
+    button:active {
+      border: 1px solid #81D4FA;
+      background-color: #81D4FA;
+    }
+
+    .less {
+      border-radius: 5px 0px 0px 5px;
+    }
+
+    .add {
+      border-radius: 0px 5px 5px 0px;
+    }
+
+    span {
+      float: left;
+      width: 100px;
+      height: 50px;
+      box-sizing: border-box;
+      line-height: 50px;
+      text-align: center;
+      border-top: 1px solid #29B6F6;
+      border-bottom: 1px solid #29B6F6;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="count">
+      <button class="less" @click='less'>-</button>
+      <span>{{count}}</span>
+      <button class="add" @click='add'>+</button>
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 0
+      },
+      methods: {
+        less() {
+          if (this.count == 0) {
+            alert('未添加')
+            return 0
+          } else {
+            this.count -= 1
+            return this.count
+          }
+        },
+        add() {
+          if (this.count < 10) {
+            this.count += 1
+          } else {
+            alert('不能再添加了')
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
