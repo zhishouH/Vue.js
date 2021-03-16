@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-show</title>
+  <script src="./vue.js"></script>
+  <style>
+    #app {
+      position: relative;
+      width: 600px;
+      height: 350px;
+      margin: 0px auto;
+    }
+
+    #app img {
+      width: 600px;
+      height: 350px;
+    }
+
+    #app span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 350px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <div @mouseenter='show' @mouseleave='hide' id="app">
+    <img src="./images/img1.jpg" alt="">
+    <span v-show='isShow'></span>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        isShow: false
+      },
+      methods: {
+        show() {
+          this.isShow = true
+        },
+        hide() {
+          this.isShow = false
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
