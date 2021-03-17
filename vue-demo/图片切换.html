@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轮播图</title>
+  <script src="./vue.js"></script>
+  <style>
+    #app {
+      position: relative;
+      width: 500px;
+      margin: 0px auto;
+    }
+
+    #app img {
+      width: 500px;
+      height: 500px;
+    }
+
+    #app p {
+      text-align: center;
+    }
+
+    a {
+      display: none;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 30px;
+      color: black;
+      position: absolute;
+      top: calc(50% - 25px);
+    }
+
+    #app:hover a {
+      display: block;
+    }
+
+    #app .prev {
+      left: 0;
+    }
+
+    #app .next {
+      right: 0;
+    }
+
+    a:hover {
+      color: #ff6700;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <a @click='prev' v-show='LeftShow' class="prev" href="#">&lt;</a>
+    <img :src="imgArray[index]" alt="">
+    <a @click='next' v-show='rightShow' class="next" href="#">&gt;</a>
+    <p>图片共{{imgArray.length}}张，当前第{{index+1}}张</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        index: 0,
+        aStutas: false,
+        imgArray: ['./images/lb-1.jpg', './images/lb-2.jpg', './images/lb-3.jpg', './images/lb-4.jpg']
+      },
+      methods: {
+        prev() {
+          this.index -= 1
+          if (this.index <= 0) {
+            this.index = 0
+          }
+        },
+        next() {
+          this.index += 1
+          if (this.index >= this.imgArray.length) {
+            this.index = this.imgArray.length - 1
+          }
+        },
+      },
+      computed: {
+        LeftShow() {
+          if (this.index == 0) {
+            return this.aStutas = false
+          } else {
+            return this.aStutas = true
+          }
+        },
+        rightShow() {
+          if (this.index >= this.imgArray.length - 1) {
+            return this.aStutas = false
+          } else {
+            return this.aStutas = true
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
